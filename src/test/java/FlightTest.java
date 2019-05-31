@@ -37,5 +37,16 @@ public class FlightTest {
         assertEquals(AirportCode.DUBLIN, flight.getDestination());
     }
 
+    @Test
+    public void getPassengerCount() {
+        assertEquals(0, flight.countPassengersOnFlight());
+    }
 
+    @Test
+    public void checkPassengerAddedToFlight() {
+        Passenger passenger = new Passenger("John", 2);
+        flight.addPassengerToFlight(passenger);
+        flight.addPassengerToFlight(passenger);
+        assertEquals(2, flight.countPassengersOnFlight());
+    }
 }

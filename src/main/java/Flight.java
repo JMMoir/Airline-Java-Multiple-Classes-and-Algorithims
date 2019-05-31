@@ -31,4 +31,12 @@ public class Flight {
     public AirportCode getDestination() {
         return this.destination;
     }
+
+    public int countPassengersOnFlight(){
+        return passengerList.size();
+    }
+
+    public void addPassengerToFlight(Passenger passenger){
+        passengerList.add(passenger);
+    }
 }
