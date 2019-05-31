@@ -49,4 +49,12 @@ public class Flight {
             addPassengerToFlight(passenger);
         }
     }
+
+    public int getTotalBagsOnboard(){
+        int numberOfBags = 0;
+        for(Passenger passenger: passengerList){
+            numberOfBags+= passenger.getNumberOfBags();
+        }
+        return numberOfBags;
+    }
 }
