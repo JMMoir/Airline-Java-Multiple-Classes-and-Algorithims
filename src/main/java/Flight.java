@@ -43,4 +43,10 @@ public class Flight {
     public int countRemainingSeat(){
         return plane.getCapacity() - passengerList.size();
     }
+
+    public void checkAvailabilityAndBook(Passenger passenger) {
+        if(countRemainingSeat() > 0){
+            addPassengerToFlight(passenger);
+        }
+    }
 }
