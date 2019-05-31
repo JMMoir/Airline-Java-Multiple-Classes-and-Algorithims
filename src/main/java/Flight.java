@@ -39,4 +39,8 @@ public class Flight {
     public void addPassengerToFlight(Passenger passenger){
         passengerList.add(passenger);
     }
+
+    public int countRemainingSeat(){
+        return plane.getCapacity() - passengerList.size();
+    }
 }
