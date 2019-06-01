@@ -31,14 +31,14 @@ public class FlightManagerTest {
 
     @Test
     public void remainingBagAllowanceOnFlight() {
-        Passenger passenger = new Passenger("John", 1   );
+        Passenger passenger = new Passenger("John", 1 ,10  );
         flight.addPassengerToFlight(passenger);
         assertEquals(164604, flightManager.findRemainingBagSpace(flight));
     }
 
     @Test
     public void canGetWeightOfBagsOnboard() {
-        Passenger passenger = new Passenger("John", 1   );
+        Passenger passenger = new Passenger("John", 1 ,10  );
         flight.addPassengerToFlight(passenger);
         flight.addPassengerToFlight(passenger);
         assertEquals(792, flightManager.getWeightOfBagsOnboard(flight));

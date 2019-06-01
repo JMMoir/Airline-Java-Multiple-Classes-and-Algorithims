@@ -4,8 +4,7 @@ import org.junit.Test;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 public class FlightTest {
 
@@ -47,7 +46,7 @@ public class FlightTest {
 
     @Test
     public void checkPassengerAddedToFlight() {
-        Passenger passenger = new Passenger("John", 2);
+        Passenger passenger = new Passenger("John", 2, 10);
         flight.addPassengerToFlight(passenger);
         flight.addPassengerToFlight(passenger);
         assertEquals(2, flight.countPassengersOnFlight());
@@ -55,21 +54,21 @@ public class FlightTest {
 
     @Test
     public void checkNumberOfAvailableSeatsLeft() {
-        Passenger passenger = new Passenger("John", 2);
+        Passenger passenger = new Passenger("John", 2, 10);
         flight.addPassengerToFlight(passenger);
         assertEquals(415, flight.countRemainingSeat());
     }
 
     @Test
     public void checkCanBookPassengerOnFlight() {
-        Passenger passenger = new Passenger("John", 2);
+        Passenger passenger = new Passenger("John", 2, 10);
         flight.checkAvailabilityAndBook(passenger);
         assertEquals(415, flight.countRemainingSeat());
     }
 
     @Test
     public void canTotalNumberOfBagsOnboard() {
-        Passenger passenger = new Passenger("John", 2);
+        Passenger passenger = new Passenger("John", 2, 10);
         flight.checkAvailabilityAndBook(passenger);
         flight.checkAvailabilityAndBook(passenger);
         flight.checkAvailabilityAndBook(passenger);
@@ -80,5 +79,14 @@ public class FlightTest {
     public void canGetDepartureTime() {
         GregorianCalendar time = new GregorianCalendar(2018, 6, 27, 16, 16, 47);
         assertEquals(time, flight.setDepartTime(time));
+    }
+
+    @Test
+    public void canGenerateAndCheckSeatNumbers() {
+        Passenger passenger1 = new Passenger("John", 2, 10);
+        flight.addPassengerToFlight(passenger1);
+        Passenger passenger2 = new Passenger("John", 2, 10);
+        flight.addPassengerToFlight(passenger2);
+        assertNotEquals(passenger1.getSeatNumber(), passenger2.getSeatNumber());
     }
 }

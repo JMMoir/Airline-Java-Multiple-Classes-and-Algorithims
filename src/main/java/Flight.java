@@ -42,6 +42,19 @@ public class Flight {
     }
 
     public void addPassengerToFlight(Passenger passenger){
+//        Generate a seat number
+        int number = generateSeatNumber();
+//        Check that number against existing seat numbers
+        for(Passenger traveler: passengerList){
+            if(traveler.getSeatNumber() == number){
+//                if it already exists generate a new one
+                number = generateSeatNumber();
+            }else {
+//                if it doesn't exist set the passengers seat number
+                passenger.setSeatNumber(number);
+            }
+        }
+//        add the passenger to the flight
         passengerList.add(passenger);
     }
 
@@ -66,5 +79,11 @@ public class Flight {
     public GregorianCalendar setDepartTime(GregorianCalendar departTime) {
         departureTime = departTime;
         return departureTime;
+    }
+
+    public int generateSeatNumber(){
+        int max = plane.getCapacity();
+        int seatNum = (int)(Math.random()*((max-1)+1))+1;
+        return seatNum;
     }
 }

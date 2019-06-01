@@ -11,7 +11,7 @@ public class PassengerTest {
     @Before
 
     public void setUp() {
-        passenger = new Passenger("John", 1);
+        passenger = new Passenger("John", 1, 10);
     }
 
     @Test
@@ -22,5 +22,16 @@ public class PassengerTest {
     @Test
     public void canGetNumberOfBags() {
         assertEquals(1, passenger.getNumberOfBags());
+    }
+
+    @Test
+    public void canGetSeatNumber() {
+        assertEquals(10, passenger.getSeatNumber());
+    }
+
+    @Test
+    public void canChangeSeatNumber() {
+        passenger.setSeatNumber(5);
+        assertEquals(5, passenger.getSeatNumber());
     }
 }
