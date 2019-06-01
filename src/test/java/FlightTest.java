@@ -89,4 +89,14 @@ public class FlightTest {
         flight.addPassengerToFlight(passenger2);
         assertNotEquals(passenger1.getSeatNumber(), passenger2.getSeatNumber());
     }
+
+    @Test
+    public void canGetPassengerList() {
+        Passenger passenger1 = new Passenger("John", 2, 10);
+        flight.addPassengerToFlight(passenger1);
+        Passenger passenger2 = new Passenger("John", 2, 10);
+        flight.addPassengerToFlight(passenger2);
+        int size = flight.getPassengerList().size();
+        assertEquals(2, size );
+    }
 }

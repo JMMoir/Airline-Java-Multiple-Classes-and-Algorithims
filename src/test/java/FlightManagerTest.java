@@ -43,4 +43,18 @@ public class FlightManagerTest {
         flight.addPassengerToFlight(passenger);
         assertEquals(792, flightManager.getWeightOfBagsOnboard(flight));
     }
+
+    @Test
+    public void canBubbleSort() {
+        Passenger passenger = new Passenger("John", 1 ,10  );
+        Passenger passenger3 = new Passenger("John", 1 ,6  );
+        Passenger passenger4 = new Passenger("John", 1 ,5  );
+        Passenger passenger2 = new Passenger("John", 1 ,1  );
+        flight.addPassengerToFlight(passenger);
+        flight.addPassengerToFlight(passenger2);
+        flight.addPassengerToFlight(passenger3);
+        flight.addPassengerToFlight(passenger4);
+        flightManager.bubbleSort(flight);
+        System.out.println(flight.getPassengerList());
+    }
 }

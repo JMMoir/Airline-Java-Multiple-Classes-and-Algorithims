@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class FlightManager {
 
     private Plane plane;
@@ -29,4 +31,22 @@ public class FlightManager {
         int allocation = getPassengerAllocationOfBaggage(plane);
         return totalOnboard * allocation;
     }
+
+    public void bubbleSort(Flight flight){
+            ArrayList<Passenger> unSortedArray = flight.getPassengerList();
+
+            int length = unSortedArray.size();
+
+            for(int i = 0; i < length-1 ; i++){
+                for(int i2 = 0; i2 <length-1; i2++){
+                    if(unSortedArray.get(i2).getSeatNumber() > unSortedArray.get(i2+1).getSeatNumber()){
+                        Passenger temp = unSortedArray.get(i2);
+                        Passenger temp2 = unSortedArray.get(i2+1);
+                        unSortedArray.set(i2,temp2);
+                        unSortedArray.set(i2+1,temp);
+                    }
+                }
+            }
+        }
 }
+
