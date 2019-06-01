@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 
 public class Flight {
 
@@ -7,6 +10,7 @@ public class Flight {
     private ArrayList<Passenger> passengerList;
     private AirportCode departure;
     private AirportCode destination;
+    private GregorianCalendar departureTime;
 
     public Flight(String flightNumber, Plane plane, AirportCode departure, AirportCode destination) {
         this.flightNumber = flightNumber;
@@ -14,6 +18,7 @@ public class Flight {
         this.departure = departure;
         this.destination = destination;
         passengerList = new ArrayList<Passenger>();
+        departureTime = new GregorianCalendar();
     }
 
     public Plane getPlane() {
@@ -56,5 +61,10 @@ public class Flight {
             numberOfBags+= passenger.getNumberOfBags();
         }
         return numberOfBags;
+    }
+
+    public GregorianCalendar setDepartTime(GregorianCalendar departTime) {
+        departureTime = departTime;
+        return departureTime;
     }
 }

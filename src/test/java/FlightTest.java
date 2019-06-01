@@ -1,6 +1,9 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
@@ -71,5 +74,11 @@ public class FlightTest {
         flight.checkAvailabilityAndBook(passenger);
         flight.checkAvailabilityAndBook(passenger);
         assertEquals(6, flight.getTotalBagsOnboard());
+    }
+
+    @Test
+    public void canGetDepartureTime() {
+        GregorianCalendar time = new GregorianCalendar(2018, 6, 27, 16, 16, 47);
+        assertEquals(time, flight.setDepartTime(time));
     }
 }
