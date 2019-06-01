@@ -32,8 +32,7 @@ public class FlightManager {
         return totalOnboard * allocation;
     }
 
-    public void bubbleSort(Flight flight){
-            ArrayList<Passenger> unSortedArray = flight.getPassengerList();
+    public void bubbleSort(ArrayList<Passenger> unSortedArray){
 
             int length = unSortedArray.size();
 
@@ -48,5 +47,28 @@ public class FlightManager {
                 }
             }
         }
+
+        public Boolean binarySearch(ArrayList<Passenger> passengerArrayList, int seatNumber){
+            if(passengerArrayList.size() == 0){
+                return true;
+            }
+            bubbleSort(passengerArrayList);
+            int length = passengerArrayList.size();
+            int midIndex = (length -1) /2;
+            Passenger midPassenger = passengerArrayList.get(midIndex);
+            int listNum = midPassenger.getSeatNumber();
+            if( listNum == seatNumber){
+                return true;
+            }
+
+            ArrayList<Passenger> newSearchArray;
+            if(listNum < seatNumber){
+                newSearchArray = new ArrayList<Passenger>(passengerArrayList.subList(midIndex + 1, passengerArrayList.size()));
+            } else {
+                newSearchArray = new ArrayList<Passenger>(passengerArrayList.subList(0, midIndex));
+            }
+            return binarySearch(newSearchArray, seatNumber);
+        }
+
 }
 

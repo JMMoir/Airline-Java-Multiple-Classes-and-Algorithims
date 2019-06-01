@@ -1,7 +1,10 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class FlightManagerTest {
 
@@ -46,15 +49,36 @@ public class FlightManagerTest {
 
     @Test
     public void canBubbleSort() {
-        Passenger passenger = new Passenger("John", 1 ,10  );
-        Passenger passenger3 = new Passenger("John", 1 ,6  );
-        Passenger passenger4 = new Passenger("John", 1 ,5  );
+        Passenger passenger = new Passenger("John", 1 ,6  );
+        Passenger passenger3 = new Passenger("John", 1 ,3  );
+        Passenger passenger4 = new Passenger("John", 1 ,200 );
         Passenger passenger2 = new Passenger("John", 1 ,1  );
         flight.addPassengerToFlight(passenger);
         flight.addPassengerToFlight(passenger2);
         flight.addPassengerToFlight(passenger3);
         flight.addPassengerToFlight(passenger4);
-        flightManager.bubbleSort(flight);
+        ArrayList<Passenger> passengerArrayList = flight.getPassengerList();
         System.out.println(flight.getPassengerList());
+        flightManager.bubbleSort(passengerArrayList);
+        System.out.println(flight.getPassengerList());
+    }
+
+    @Test
+    public void canBinarySearch() {
+        Passenger passenger = new Passenger("John", 1 ,200  );
+        Passenger passenger3 = new Passenger("John", 1 ,200 );
+        Passenger passenger4 = new Passenger("John", 1 ,200 );
+        Passenger passenger2 = new Passenger("John", 1 ,200 );
+        flight.addPassengerToFlight(passenger);
+        flight.addPassengerToFlight(passenger);
+        flight.addPassengerToFlight(passenger);
+        flight.addPassengerToFlight(passenger);
+        flight.addPassengerToFlight(passenger);
+        flight.addPassengerToFlight(passenger);
+        flight.addPassengerToFlight(passenger2);
+        flight.addPassengerToFlight(passenger3);
+        flight.addPassengerToFlight(passenger4);
+        ArrayList<Passenger> passengerArrayList = flight.getPassengerList();
+        assertTrue(flightManager.binarySearch(passengerArrayList,200));
     }
 }
