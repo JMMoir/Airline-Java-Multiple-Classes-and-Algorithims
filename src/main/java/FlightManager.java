@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class FlightManager {
 
-    private Plane plane;
 
     public FlightManager(){
     }
@@ -48,9 +47,9 @@ public class FlightManager {
             }
         }
 
-        public Boolean binarySearch(ArrayList<Passenger> passengerArrayList, int seatNumber){
+        public  Passenger binarySearch(ArrayList<Passenger> passengerArrayList, int seatNumber){
             if(passengerArrayList.size() == 0){
-                return true;
+                return null;
             }
             bubbleSort(passengerArrayList);
             int length = passengerArrayList.size();
@@ -58,7 +57,7 @@ public class FlightManager {
             Passenger midPassenger = passengerArrayList.get(midIndex);
             int listNum = midPassenger.getSeatNumber();
             if( listNum == seatNumber){
-                return true;
+                return midPassenger;
             }
 
             ArrayList<Passenger> newSearchArray;

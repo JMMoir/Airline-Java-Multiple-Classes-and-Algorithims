@@ -66,9 +66,9 @@ public class FlightManagerTest {
     @Test
     public void canBinarySearch() {
         Passenger passenger = new Passenger("John", 1 ,200  );
-        Passenger passenger3 = new Passenger("John", 1 ,200 );
-        Passenger passenger4 = new Passenger("John", 1 ,200 );
-        Passenger passenger2 = new Passenger("John", 1 ,200 );
+        Passenger passenger3 = new Passenger("John", 1 ,29 );
+        Passenger passenger4 = new Passenger("John", 1 ,10 );
+        Passenger passenger2 = new Passenger("John", 1 ,321 );
         flight.addPassengerToFlight(passenger);
         flight.addPassengerToFlight(passenger);
         flight.addPassengerToFlight(passenger);
@@ -79,6 +79,9 @@ public class FlightManagerTest {
         flight.addPassengerToFlight(passenger3);
         flight.addPassengerToFlight(passenger4);
         ArrayList<Passenger> passengerArrayList = flight.getPassengerList();
-        assertTrue(flightManager.binarySearch(passengerArrayList,200));
+        int searchNumber = passenger4.getSeatNumber();
+        Passenger foundPassenger = flightManager.binarySearch(passengerArrayList,searchNumber);
+        assertEquals(passenger4.getName(), foundPassenger.getName());
+        assertEquals(passenger4.getSeatNumber(), foundPassenger.getSeatNumber());
     }
 }
